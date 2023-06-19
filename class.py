@@ -60,12 +60,13 @@ class Person:
     
     
     def update_email(self, email : str ) -> None:
+        first_name = self.split_name[0]
         self.email = email
         emailService = EmailService(SMTP_SERVER, PORT, EMAIL,PASSWORD)
         emailService.send_message(
             self.email,
             'Password reset request',
-            'Your email address has been set successfully! If no be you, problem dey o'
+            f'Dear {first_name}, Your email address has been set successfully! If no be you, problem dey o'
         )
 
 
