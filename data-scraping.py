@@ -1,5 +1,6 @@
 import wikipediaapi
 import requests
+from bs4 import BeautifulSoup
 
 """""
 wiki = wikipediaapi.Wikipedia('en')
@@ -11,4 +12,7 @@ print('Page Exist %s' % query.exists())
 url = "https://en.wikipedia.org/wiki/Sinking_of_the_Titanic"
 page = requests.get(url)
 
-print(page.text)
+soup = BeautifulSoup(page.content, 'html.parser')
+results = soup.find_all('table', class_='wikitable')
+#for result in results:
+print(results)
