@@ -13,6 +13,13 @@ url = "https://en.wikipedia.org/wiki/Sinking_of_the_Titanic"
 page = requests.get(url)
 
 soup = BeautifulSoup(page.content, 'html.parser')
-results = soup.find_all('table', class_='wikitable')
-#for result in results:
-print(results)
+results = soup.find_all('a')
+men = soup.find_all(string='Men')
+
+for result in results:
+    #print(result, end='\n')
+    #table_head = result.find('tr')
+    #table_body = result.find('tbody')
+    links = result['href']
+    print('Apply here ',links, '\n')
+    #print(table_body)
